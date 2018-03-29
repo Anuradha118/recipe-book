@@ -7,7 +7,7 @@ const express = require('express');
 const ngUniversal= require('@nguniversal/express-engine');
 const {provideModuleMap} =require('@nguniversal/module-map-ngfactory-loader');
 
-const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist-server/main.bundle');
+const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist/main.bundle');
 
 function angularRouter(req,res){
     res.render('index',{req,res});
