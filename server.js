@@ -7,12 +7,12 @@ const express = require('express');
 const ngUniversal= require('@nguniversal/express-engine');
 const {provideModuleMap} =require('@nguniversal/module-map-ngfactory-loader');
 
-const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist/main.bundle');
+const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist-server/main.bundle');
 
 function angularRouter(req,res){
     res.render('index',{req,res});
 }
-
+const port=process.env.PORT||3000;
 const app = express();
 
 app.engine('html',ngUniversal.ngExpressEngine({
@@ -30,6 +30,6 @@ app.use(express.static(`${__dirname}/dist`));
 
 app.get('*',angularRouter);
 
-app.listen(3000,()=>{
-    console.log('Listening on port 3000');
+app.listen(port,()=>{
+    console.log(`Started up at port ${port}`);
 })
